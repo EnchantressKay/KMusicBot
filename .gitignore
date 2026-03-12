@@ -1,3 +1,4 @@
 node_modules
 yt-dlp
 package-lock.json
+.env
