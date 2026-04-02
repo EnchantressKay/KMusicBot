@@ -16,6 +16,7 @@ const { execSync, spawn } = require('child_process');
 const play = require('play-dl');
 
 const ytDlpPath = path.join(__dirname, 'yt-dlp');
+const DEFAULT_VOLUME = parseFloat(process.env.DEFAULT_VOLUME || '0.1');
 
 const client = new Client({
     intents: [
@@ -88,7 +89,7 @@ async function playNext(guildId) {
             inlineVolume: true
         });
 
-        const volume = guildVolumes.get(guildId) ?? 0.1;
+        const volume = guildVolumes.get(guildId) ?? DEFAULT_VOLUME;
         resource.volume.setVolume(volume);
 
         queueData.player.play(resource);
@@ -263,7 +264,7 @@ client.on(Events.MessageCreate, async message => {
     if (command === '!volume') {
         const volumeArg = args[1];
         if (!volumeArg) {
-            const currentVolume = (guildVolumes.get(message.guildId) ?? 0.1) * 100;
+            const currentVolume = (guildVolumes.get(message.guildId) ?? DEFAULT_VOLUME) * 100;
             return message.reply(`🔊 Current volume is **${currentVolume}%**.`);
         }
 

@@ -26,7 +26,7 @@ A powerful Discord bot built with Node.js that plays and searches YouTube videos
     ```bash
     cp .env.example .env
     ```
-4.  Fill in your `DISCORD_TOKEN` in the `.env` file.
+4.  Fill in your `DISCORD_TOKEN` and optionally a `DEFAULT_VOLUME` (between `0.0` and `1.0`, where `0.1` is 10%) in the `.env` file.
 
 ## Usage
 
